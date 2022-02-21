@@ -15,9 +15,9 @@
     <div id="app" v-cloak>
 
         <h2>1) Example of Vue JS variable, as well as input bound to a variable.</h2><br>
-        {{ greeting }}
+        <textarea type="text" v-model="greeting"></textarea>
+        <p>{{ greeting }}</p>
 
-        <input v-model="greeting" />
         <hr><br>
 
         <!-- Example of conditionals used to render components using v-if, v-else-if, and v-else
@@ -46,26 +46,24 @@
             <div v-if="toggleYellowBox" class="box yellow flex-child"></div>
 
         </div>
-      
+
+        <hr><br>
+
+        <h2>4) Listening for keyboard events</h2>
+        <input @keyup.enter="keyUpEnterMethod()" v-model="keyUpEnter" type="text">
+        <p>{{keyUpEnter}}</p>
 
 
     </div>
 
-
-
-
-
-
     <script src="https://unpkg.com/vue@3"></script>
-
-    
 
     <script>
         Vue.createApp({
             data() {
                 return {
                     //Example of a string variable called "greeting" with a value of "Hello Vue!". 
-                    greeting: 'Hello Vue!',
+                    greeting: 'This input will display in a p tag below, try for yourself.',
 
                     //Example of a boolean variable. If false, the component will not be rendered in the DOM (comments it out, very cool).
                     isVisibleOne: false,
@@ -74,17 +72,26 @@
                     
                     togglePurpleBox: false,
                     toggleYellowBox: false,
+
+                    keyUpEnter: 'If you click into input/enter anything new and press "enter" key, a message will print to the console log.',
                 }
             },
             methods: {
                 toggleYellowBoxMethod() {
                         this.toggleYellowBox = !this.toggleYellowBox
+                },
+
+                keyUpEnterMethod(){
+                    console.log("wat de heck")
+                    keyUpEnter = "Is this working?"
                 }
                 
             },
 
         }).mount('#app')
     </script>
+
+    
 </body>
 
 </html>
