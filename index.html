@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World Vue App</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <div id="app" v-cloak>
+
+        <h2>1) Example of Vue JS variable, as well as input bound to a variable.</h2><br>
+        {{ greeting }}
+
+        <input v-model="greeting" />
+        <hr><br>
+
+        <!-- Example of conditionals used to render components using v-if, v-else-if, and v-else
+    3 divs below are styled to display a red, blue, or green box depending on the condition set. 
+    It should display the green box since the first two conditions are set to false, but the green 
+    box is set to true. 
+    V-if's are useful when you want to display something in the DOM, or not display
+    something in the DOM. If you need to toggle something more frequently, you can use v-show.
+    -->
+        <h2>2) Rendering components based on if-else conditionals.</h2>
+        <div v-if="isVisibleOne" class="box red"></div>
+        <div v-else-if="isVisibleTwo" class="box blue"></div>
+        <div v-else="isVisibleThree" class="box green"></div>
+
+        <hr><br>
+
+        <h2>3) On-click event handlers. First Button uses v-on:click while the second button uses a method.</h2>
+        <button v-on:click="togglePurpleBox = !togglePurpleBox">Toggle Purple Box</button>
+        <button @click="toggleYellowBoxMethod">Toggle Yellow Box</button>
+        <br>
+
+        <div class="flex-container">
+            
+            <div v-if="togglePurpleBox" class="box purple flex-child"></div>
+
+            <div v-if="toggleYellowBox" class="box yellow flex-child"></div>
+
+        </div>
+      
+
+
+    </div>
+
+
+
+
+
+
+    <script src="https://unpkg.com/vue@3"></script>
+
+    
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    //Example of a string variable called "greeting" with a value of "Hello Vue!". 
+                    greeting: 'Hello Vue!',
+
+                    //Example of a boolean variable. If false, the component will not be rendered in the DOM (comments it out, very cool).
+                    isVisibleOne: false,
+                    isVisibleTwo: false,
+                    isVisibleThree: true,
+                    
+                    togglePurpleBox: false,
+                    toggleYellowBox: false,
+                }
+            },
+            methods: {
+                toggleYellowBoxMethod() {
+                        this.toggleYellowBox = !this.toggleYellowBox
+                }
+                
+            },
+
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

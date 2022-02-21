@@ -1,0 +1,41 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 2px solid black;
+}
+
+.box {
+    height: 200px;
+    width: 200px;
+
+}
+
+/* v-if styles */
+.box.red {
+    background-color: red;
+}
+
+.box.blue {
+background-color: blue;
+}
+
+.box.green {
+background-color: green;
+}
+
+.box.purple {
+    background-color:purple;
+}
+
+.box.yellow {
+    background-color: yellow;
+}
+
+/* v-cloak styling. Ensures disabled components are not rendered upon refresh. */
+[v-cloak] {
+    display: none;
+}
+
